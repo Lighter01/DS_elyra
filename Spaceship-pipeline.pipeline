@@ -630,15 +630,29 @@
             },
             {
               "id": "405ef3a5-3d3f-4530-8b05-faab93a0c6a9",
-              "x_pos": 562,
-              "y_pos": 61,
+              "x_pos": 874,
+              "y_pos": 349,
               "width": 175,
-              "height": 42,
-              "content": "",
+              "height": 45,
+              "content": "Comparison of the models on the validation set",
               "associated_id_refs": [
                 {
                   "id": "2f6c1595-e6c2-4702-8b26-ced0501f8e87",
                   "node_ref": "a31c4c4c-4a48-41c6-bf9d-b860defb9715"
+                }
+              ]
+            },
+            {
+              "id": "7cc27888-2b68-49ae-9c2f-1794f8ca1657",
+              "x_pos": 1157.9999389648438,
+              "y_pos": 353,
+              "width": 175,
+              "height": 42,
+              "content": "Best model's predictions for the task\n",
+              "associated_id_refs": [
+                {
+                  "id": "de9ccf8c-9174-4724-9250-1d3ce08a2e45",
+                  "node_ref": "e0ca126d-d254-480a-a31f-aaba422105cc"
                 }
               ]
             }
