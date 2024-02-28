@@ -1,1 +1,681 @@
-{"doc_type":"pipeline","version":"3.0","json_schema":"http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json","id":"elyra-auto-generated-pipeline","primary_pipeline":"primary","pipelines":[{"id":"primary","nodes":[],"app_data":{"ui_data":{"comments":[]},"version":8},"runtime_ref":""}],"schemas":[]}
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "6e0976ae-e85c-4d8d-bb85-c57e62db8599",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [
+                "datasets/train_cleaned.csv",
+                "datasets/test_cleaned.csv"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "data_cleaning.ipynb",
+              "runtime_image": "amancevice/pandas@sha256:f74bef70689b19d3cd610ef67227fce1c9a6ed8fa950ac2aff39ce72310d5520"
+            },
+            "label": "Load and clean data",
+            "ui_data": {
+              "label": "Load and clean data",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 25,
+              "y_pos": 312,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "63d0dcc4-972c-4f78-a231-487b80672241",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "data_analysis.ipynb",
+              "runtime_image": "amancevice/pandas@sha256:f74bef70689b19d3cd610ef67227fce1c9a6ed8fa950ac2aff39ce72310d5520"
+            },
+            "label": "Data analysis",
+            "ui_data": {
+              "label": "Data analysis",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 287,
+              "y_pos": 178,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "8ae3decb-bfcb-4bb2-84c2-7e7a8f69e94f",
+                  "node_id_ref": "6e0976ae-e85c-4d8d-bb85-c57e62db8599",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "8a9f8cc2-b65a-41e1-be27-a02cb5974013",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [
+                "datasets/tree/train_tree.csv",
+                "datasets/tree/test_tree.csv"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "data_tree_preprocessing.ipynb",
+              "runtime_image": "amancevice/pandas@sha256:f74bef70689b19d3cd610ef67227fce1c9a6ed8fa950ac2aff39ce72310d5520"
+            },
+            "label": "Data encoding for tree models",
+            "ui_data": {
+              "label": "Data encoding for tree models",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 330,
+              "y_pos": 413,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "72b8be0a-ecdc-4eec-bfad-39899574ad35",
+                  "node_id_ref": "6e0976ae-e85c-4d8d-bb85-c57e62db8599",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "adf2c1e1-6282-4d8e-951d-116826bd1479",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [
+                "datasets/regression/train_log.csv",
+                "datasets/regression/test_log.csv"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "data_regression_preprocessing.ipynb",
+              "runtime_image": "amancevice/pandas@sha256:f74bef70689b19d3cd610ef67227fce1c9a6ed8fa950ac2aff39ce72310d5520"
+            },
+            "label": "Data encoding for regression models",
+            "ui_data": {
+              "label": "Data encoding for regression models",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 328,
+              "y_pos": 518,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "9df9cb77-d357-4538-b14c-b7dae248555d",
+                  "node_id_ref": "6e0976ae-e85c-4d8d-bb85-c57e62db8599",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "e286eb6e-d2cb-486a-b0c7-9baac17a83a8",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [
+                "models/random_forest.pkl",
+                "datasets/for_comparison/X_val_tree.csv",
+                "datasets/for_comparison/y_val_tree.csv"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "random_forest.ipynb",
+              "runtime_image": "amancevice/pandas@sha256:f74bef70689b19d3cd610ef67227fce1c9a6ed8fa950ac2aff39ce72310d5520"
+            },
+            "label": "Random forest classifier",
+            "ui_data": {
+              "label": "Random forest classifier",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 601,
+              "y_pos": 413,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "a5eac2bb-954d-481c-9306-57e2b3bc5bfe",
+                  "node_id_ref": "8a9f8cc2-b65a-41e1-be27-a02cb5974013",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "c1cf6e9c-71a4-44d7-8b75-b9493bcb1480",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [
+                "models/logistic_regression.pkl",
+                "datasets/for_comparison/X_test_log.npy",
+                "datasets/for_comparison/X_val_log.npy",
+                "datasets/for_comparison/y_val_log.csv"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "logistic_regression.ipynb",
+              "runtime_image": "amancevice/pandas@sha256:f74bef70689b19d3cd610ef67227fce1c9a6ed8fa950ac2aff39ce72310d5520"
+            },
+            "label": "Logistic regression classifier",
+            "ui_data": {
+              "label": "Logistic regression classifier",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 601,
+              "y_pos": 518,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "9f0bac0b-90d3-496d-83a3-040b30fbd8b2",
+                  "node_id_ref": "adf2c1e1-6282-4d8e-951d-116826bd1479",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "a31c4c4c-4a48-41c6-bf9d-b860defb9715",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [
+                "models/best_model.pkl"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "models_comparison.ipynb",
+              "runtime_image": "amancevice/pandas@sha256:f74bef70689b19d3cd610ef67227fce1c9a6ed8fa950ac2aff39ce72310d5520"
+            },
+            "label": "Model comparison",
+            "ui_data": {
+              "label": "Model comparison",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 878,
+              "y_pos": 461,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "ec1e4f93-11f1-43a9-8a93-4c8d6a312707",
+                  "node_id_ref": "e286eb6e-d2cb-486a-b0c7-9baac17a83a8",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "7ad34795-e991-4da7-a7f6-496b964d1a38",
+                  "node_id_ref": "c1cf6e9c-71a4-44d7-8b75-b9493bcb1480",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "e0ca126d-d254-480a-a31f-aaba422105cc",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [
+                "datasets/result.csv"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "best_models_predictions.ipynb",
+              "runtime_image": "amancevice/pandas@sha256:f74bef70689b19d3cd610ef67227fce1c9a6ed8fa950ac2aff39ce72310d5520"
+            },
+            "label": "Final predictions",
+            "ui_data": {
+              "label": "Final predictions",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 1165.9999389648438,
+              "y_pos": 461,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "540b9f27-e7ac-431b-9c62-9016b55af97b",
+                  "node_id_ref": "a31c4c4c-4a48-41c6-bf9d-b860defb9715",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": [
+            {
+              "id": "87cf2c9c-7166-493a-b5f1-2bdcc97dbb41",
+              "x_pos": 16,
+              "y_pos": 74,
+              "width": 175,
+              "height": 54,
+              "content": "Load data, clean it and make first glance analysis",
+              "associated_id_refs": [
+                {
+                  "id": "bcd7fc86-e85b-4e4e-a815-f7c4b52881e8",
+                  "node_ref": "6e0976ae-e85c-4d8d-bb85-c57e62db8599"
+                }
+              ]
+            },
+            {
+              "id": "1b1a0b0c-b55b-4cc9-b93d-e4a6ac0fc1a0",
+              "x_pos": 279,
+              "y_pos": 77,
+              "width": 175,
+              "height": 50,
+              "content": "Generate data analysis via sweetviz",
+              "associated_id_refs": [
+                {
+                  "id": "51d13578-39a5-4578-8918-b74579f3a6aa",
+                  "node_ref": "63d0dcc4-972c-4f78-a231-487b80672241"
+                }
+              ]
+            },
+            {
+              "id": "50202f7c-55f5-4ba4-b9b2-31db7b9b45e3",
+              "x_pos": 323,
+              "y_pos": 336,
+              "width": 175,
+              "height": 36,
+              "content": "Encoding for tree models",
+              "associated_id_refs": [
+                {
+                  "id": "d3b75cbb-1ccf-4f57-8148-df53379a2063",
+                  "node_ref": "8a9f8cc2-b65a-41e1-be27-a02cb5974013"
+                }
+              ]
+            },
+            {
+              "id": "8d7e4fb5-2923-4fd5-be58-4733f5897339",
+              "x_pos": 322,
+              "y_pos": 600,
+              "width": 175,
+              "height": 45,
+              "content": "Encoding for regression models",
+              "associated_id_refs": [
+                {
+                  "id": "342cc9cd-2f96-4389-ad82-9d9ce5f045f1",
+                  "node_ref": "adf2c1e1-6282-4d8e-951d-116826bd1479"
+                }
+              ]
+            },
+            {
+              "id": "1a28edab-436c-4e1b-9704-0d8ee8b6fce0",
+              "x_pos": 587,
+              "y_pos": 307,
+              "width": 175,
+              "height": 78,
+              "content": "Tranining random forest classifier. Finding best number of estimators and best threshold",
+              "associated_id_refs": [
+                {
+                  "id": "8baac157-afb1-4a78-b61f-52a2a0140bbd",
+                  "node_ref": "e286eb6e-d2cb-486a-b0c7-9baac17a83a8"
+                }
+              ]
+            },
+            {
+              "id": "fd3df6fc-b3ff-4733-b2d7-acabd3064574",
+              "x_pos": 603,
+              "y_pos": 586,
+              "width": 175,
+              "height": 59,
+              "content": "Training logistic regression classifier. Finding best threshold.",
+              "associated_id_refs": [
+                {
+                  "id": "9a4adbc9-a03d-4084-9be3-d28c0d71715d",
+                  "node_ref": "c1cf6e9c-71a4-44d7-8b75-b9493bcb1480"
+                }
+              ]
+            },
+            {
+              "id": "405ef3a5-3d3f-4530-8b05-faab93a0c6a9",
+              "x_pos": 874,
+              "y_pos": 349,
+              "width": 175,
+              "height": 45,
+              "content": "Comparison of the models on the validation set",
+              "associated_id_refs": [
+                {
+                  "id": "2f6c1595-e6c2-4702-8b26-ced0501f8e87",
+                  "node_ref": "a31c4c4c-4a48-41c6-bf9d-b860defb9715"
+                }
+              ]
+            },
+            {
+              "id": "7cc27888-2b68-49ae-9c2f-1794f8ca1657",
+              "x_pos": 1157.9999389648438,
+              "y_pos": 353,
+              "width": 175,
+              "height": 42,
+              "content": "Best model's predictions for the task\n",
+              "associated_id_refs": [
+                {
+                  "id": "de9ccf8c-9174-4724-9250-1d3ce08a2e45",
+                  "node_ref": "e0ca126d-d254-480a-a31f-aaba422105cc"
+                }
+              ]
+            }
+          ]
+        },
+        "version": 8,
+        "properties": {
+          "name": "Spaceship-pipeline",
+          "runtime": "Generic",
+          "pipeline_defaults": {
+            "kubernetes_shared_mem_size": {},
+            "kubernetes_tolerations": [],
+            "kubernetes_pod_labels": [],
+            "kubernetes_pod_annotations": [],
+            "mounted_volumes": [],
+            "kubernetes_secrets": [],
+            "env_vars": []
+          },
+          "description": "Spaceship Titanic task solution using different models"
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}

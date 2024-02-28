@@ -158,7 +158,7 @@
             "ui_data": {
               "label": "Data encoding for tree models",
               "image": "/static/elyra/notebook.svg",
-              "x_pos": 295,
+              "x_pos": 330,
               "y_pos": 413,
               "description": "Run notebook file"
             }
@@ -225,7 +225,7 @@
             "ui_data": {
               "label": "Data encoding for regression models",
               "image": "/static/elyra/notebook.svg",
-              "x_pos": 298,
+              "x_pos": 328,
               "y_pos": 518,
               "description": "Run notebook file"
             }
@@ -588,8 +588,8 @@
             },
             {
               "id": "8d7e4fb5-2923-4fd5-be58-4733f5897339",
-              "x_pos": 357,
-              "y_pos": 598,
+              "x_pos": 322,
+              "y_pos": 600,
               "width": 175,
               "height": 45,
               "content": "Encoding for regression models",
